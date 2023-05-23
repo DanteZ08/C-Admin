@@ -55,7 +55,11 @@ class ConsultantController extends BaseController
         return redirect('login');
     }
 
-
+    /**
+     * Creates an consultant account
+     * @param Request $request - Gets POST request parameters
+     */
+    
     public function CreateConsultantAccount(Request $request){
 
         $this->validate($request, [
@@ -70,7 +74,7 @@ class ConsultantController extends BaseController
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => password_hash($request->input('password'), PASSWORD_DEFAULT),
-            'image' => 'dsadsa'
+            'image' => 'https://www.citypng.com/public/uploads/small/11640168385jtmh7kpmvna5ddyynoxsjy5leb1nmpvqooaavkrjmt9zs7vtvuqi4lcwofkzsaejalxn7ggpim4hkg0wbwtzsrp1ldijzbdbsj5z.png'
         ]);
 
         return redirect('consultants/create');        
