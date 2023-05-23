@@ -26,7 +26,7 @@ Route::middleware('throttle:100,60')->group(function () {
     Route::get('logout', function () {
         Auth::logout();
         return Redirect::route('login');
-    })->name('logout')->middleware('throttle:100,60');
+    })->name('logout');
 
     Route::post('user_login', [ConsultantController::class, 'ConsultantLogin'])->name('cons_login');
 
@@ -49,6 +49,19 @@ Route::middleware('throttle:100,60')->group(function () {
             Route::post('consultant_create', [ConsultantController::class, 'CreateConsultantAccount'])->name('create-consultant-account');
         });
 
+        //Appointments
+
+        Route::prefix('appointments')->group(function(){
+
+            Route::get('my', function () {
+                return view('pages.appointments.my');
+            })->name('my.appointments');
+
+            Route::get('all', function () {
+                return view('pages.appointments.all');
+            })->name('all.appointments');
+
+        });
     });
 
 });
