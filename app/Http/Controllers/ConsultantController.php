@@ -39,7 +39,7 @@ class ConsultantController extends BaseController
             return redirect()->intended('/');
         }
 
-        return redirect('login')->with('result', ['danger', 'Incorrect username or password!']);
+        return redirect('login')->with('result', ['danger', 'Incorrect email or password!']);
 
     }
 
@@ -50,7 +50,7 @@ class ConsultantController extends BaseController
      * @return redirect To /login after logout procedure
      */
 
-    public function ConsultantLogout(){
+    public function consultantLogout(){
         Auth::logout();
         return redirect('login');
     }
@@ -60,7 +60,7 @@ class ConsultantController extends BaseController
      * @param Request $request - Gets POST request parameters
      */
     
-    public function CreateConsultantAccount(Request $request){
+    public function createConsultantAccount(Request $request){
 
         $this->validate($request, [
             'name' => 'required',

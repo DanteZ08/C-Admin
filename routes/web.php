@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConsultantController;
+use App\Models\Appointments;
 use App\Models\Consultants;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware('throttle:100,60')->group(function () {
+Route::middleware('throttle:10000,60')->group(function () {
 
     // For login
     Route::get('/login', function () {
@@ -28,7 +29,7 @@ Route::middleware('throttle:100,60')->group(function () {
         return Redirect::route('login');
     })->name('logout');
 
-    Route::post('user_login', [ConsultantController::class, 'ConsultantLogin'])->name('cons_login');
+    Route::post('user_login', [ConsultantController::class, 'consultantLogin'])->name('cons_login');
 
     ///////////////////////////////////////////////////////////////////////
 
@@ -46,7 +47,7 @@ Route::middleware('throttle:100,60')->group(function () {
                 return view('pages.cons-accounts.create-account');
             })->name('consultants.create');
 
-            Route::post('consultant_create', [ConsultantController::class, 'CreateConsultantAccount'])->name('create-consultant-account');
+            Route::post('consultant_create', [ConsultantController::class, 'createConsultantAccount'])->name('create-consultant-account');
         });
 
         //Appointments
@@ -58,7 +59,8 @@ Route::middleware('throttle:100,60')->group(function () {
             })->name('my.appointments');
 
             Route::get('all', function () {
-                return view('pages.appointments.all');
+                $appointments = Appointments::get();
+                return view('pages.appointments.all',compact('appointments'));
             })->name('all.appointments');
 
         });

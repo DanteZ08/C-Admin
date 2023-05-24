@@ -13,7 +13,7 @@ return [
      */
     'casts'         => false,
     'channels'      => false,
-    'commands'      => false,
+    'commands'      => true,
     'components'    => false,
     'controllers'   => true,
     'events'        => false,
