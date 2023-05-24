@@ -3,6 +3,9 @@
 
 Consultant dashboard
 
+## Login credentials
+-Email: test@email.com
+-Password: test@email.com
 
 ## Features
 
