@@ -38,8 +38,9 @@ Route::middleware('throttle:10000,60')->group(function () {
     Route::middleware(['auth'])->group(function () {
 
         Route::get('/', function () {
-            return view('pages.index');
-        });
+            $appointments = Appointments::get();
+            return view('pages.index', compact('appointments'));
+        })->name('index');
 
         // Consultant 
         Route::prefix('consultants')->group(function () {
@@ -52,18 +53,6 @@ Route::middleware('throttle:10000,60')->group(function () {
 
         //Appointments
 
-        Route::prefix('appointments')->group(function(){
-
-            Route::get('my', function () {
-                return view('pages.appointments.my');
-            })->name('my.appointments');
-
-            Route::get('all', function () {
-                $appointments = Appointments::get();
-                return view('pages.appointments.all',compact('appointments'));
-            })->name('all.appointments');
-
-        });
     });
 
 });

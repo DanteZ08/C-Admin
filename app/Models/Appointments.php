@@ -19,5 +19,5 @@ class Appointments extends Model
         'startDate',
         'status'
     ];
-
+    
 }

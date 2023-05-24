@@ -37,12 +37,11 @@
 
     <script src="{{asset('assets/plugins/moment/moment.min.js')}}"></script>
     <script src="{{asset('assets/plugins/fullcalendar/main.js')}}"></script>
-    @if(\Request::route()->getName() == "all.appointments")
+    @if(\Request::route()->getName() == "index")
     <script>
+
         $(function () {
-      
-          
-      
+    
           /* initialize the calendar
            -----------------------------------------------------------------*/
           //Date for the calendar events (dummy data)
@@ -97,7 +96,7 @@
           });
       
           calendar.render();
-          // $('#calendar').fullCalendar()
+         
       
           /* ADDING EVENTS */
           var currColor = '#3c8dbc' //Red by default
