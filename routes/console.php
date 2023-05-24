@@ -27,7 +27,7 @@ Artisan::command('make:consultants', function(){
         Consultants::create([
             'UID' => generateUniqueMongoId('consultants'),
             'name' => $first[array_rand($first)] . " " . $last[array_rand($last)],
-            'email' => 'test@email.com',
+            'email' => 'test1@email.com',
             'password' => password_hash(generateUniqueMongoId('consultants'), PASSWORD_DEFAULT),
             'image' => 'https://www.citypng.com/public/uploads/small/11640168385jtmh7kpmvna5ddyynoxsjy5leb1nmpvqooaavkrjmt9zs7vtvuqi4lcwofkzsaejalxn7ggpim4hkg0wbwtzsrp1ldijzbdbsj5z.png',
             'status' => 0
@@ -35,3 +35,4 @@ Artisan::command('make:consultants', function(){
     }
     
 });
+
